@@ -1,13 +1,15 @@
 body {
+	box-sizing: border-box;
 	background: no-repeat url('/bg-1.jpg');
 	background-size: cover;
 	color: white;
 	font-family: Arial, Helvetica, sans-serif;
 }
 .headerRow {
+	box-sizing: border-box;
 	display: flex;
 	align-items: center;
-	margin: 1rem auto;
+	margin: 2rem auto;
 	/* border: 1px solid white; */
 	justify-content: space-around;
 	padding: 10px;
@@ -20,6 +22,7 @@ body {
 	font-family: 'Poppins';
 }
 .operationSection {
+	box-sizing: border-box;
 	width: 50%;
 	display: flex;
 	justify-content: space-evenly;
@@ -63,6 +66,7 @@ form {
 }
 
 .addRemove {
+	box-sizing: border-box;
 	width: max-content;
 	padding: 10px 20px;
 	display: flex;
@@ -95,4 +99,53 @@ form {
 	padding: 5px;
 	/* height: 100%;
 	width: 100%; */
+}
+/* Header row ends here */
+
+/* data row started Here */
+
+.dataRow {
+	/* border: 2px solid blueviolet; */
+	box-sizing: border-box;
+	margin: 2rem auto;
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+}
+.daily {
+	background-color: #2e2e2e;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+	width: 27%;
+	/* border: 1px solid black; */
+}
+.weekly {
+	background-color: #2e2e2e;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+	width: 27%;
+	/* border: 1px solid black; */
+}
+.eventual {
+	background-color: #2e2e2e;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+	width: 27%;
+	/* border: 1px solid black; */
+}
+.dataHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.list {
+	list-style-type: none;
+	padding: 0px;
+}
+.list > li {
+	background-color: #161515;
+	margin: 5px auto;
+	padding: 10px;
+	border-radius: 5px;
+	/* text-align: center; */
 }
