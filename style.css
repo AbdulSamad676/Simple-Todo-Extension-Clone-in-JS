@@ -3,3 +3,27 @@ body {
 	color: white;
 	font-family: Arial, Helvetica, sans-serif;
 }
+.headerRow {
+	display: flex;
+	align-items: center;
+	margin: 1rem auto;
+	border: 1px solid white;
+	justify-content: space-around;
+	padding: 10px;
+}
+#date {
+	width: 50%;
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+	font-family: 'Poppins';
+}
+.addRemove {
+	width: 50%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.header-items {
+	/* border: 1px solid white; */
+}
