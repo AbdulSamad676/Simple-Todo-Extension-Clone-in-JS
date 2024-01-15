@@ -18,16 +18,17 @@
 <body>
     <div class="headerRow">
         <div class="header-items" id="date">Date:</div>
-        <div class="addRemove">
+        <div class="operationSection">
             <div class="header-items searchSection">
                 <form action="">
-                    <input type="text" name="search" id="search">
-                    <button type="submit"> <i class="fa">&#xf002;</i></button>
+                    <input class="searchInput" type="text" name="search" id="search">
+                    <button type="submit" class="searchButton"> <i class="fa">&#xf002;</i></button>
                 </form>
             </div>
 
-            <div class="header-items">
-                Add addRemove
+            <div class="addRemove">
+                <div> <button class="addBtn"> Add Todo </button></div>
+                <div><button class="removeBtn"> Remove </button></div>
             </div>
         </div>
     </div>
