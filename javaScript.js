@@ -9,3 +9,8 @@ const today = new Date().toLocaleDateString('en-US', currenDate);
 
 console.log(today);
 document.getElementById('date').textContent = today;
+
+function handleButtonClick(optionId) {
+	// Handle button click here
+	console.log(`Button ${optionId} clicked`);
+}

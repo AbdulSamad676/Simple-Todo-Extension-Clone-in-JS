@@ -83,6 +83,45 @@
         </div>
 
     </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <div class="modalData">
+                <form class="modalForm" action="">
+                    <label for="">What do you want to do</label></br>
+                    <input type="text">
+                    <br>
+                    <label for="">When do you want to do</label></br>
+                    <!-- <input type="radio" id="option1" name="options">
+                    <button>Button 1</button>
+
+                    <input type="radio" id="option2" name="options">
+                    <button>Button 2</button> -->
+
+                    <div class="button-container">
+                        <input type="radio" id="option1" class="radio-button" name="options">
+                        <label for="option1" class="custom-button" onclick="handleButtonClick('option1')">Button
+                            1</label>
+
+                        <input type="radio" id="option2" class="radio-button" name="options">
+                        <label for="option2" class="custom-button" onclick="handleButtonClick('option2')">Button
+                            2</label>
+
+                        <!-- Add more buttons as needed -->
+                    </div>
+
+                    <button class="saveTodoBtn" type="submit">Save Todo</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
     <script src="javaScript.js"></script>
 </body>
 
