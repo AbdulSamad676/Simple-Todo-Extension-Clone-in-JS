@@ -168,30 +168,51 @@ form {
 .modal-content {
 	width: max-content;
 
-	color: black;
-	background-color: #fefefe;
+	color: white;
+	background-color: #161515;
 	margin: auto;
 	padding: 1rem;
-	border: 1px solid #888;
+	/* border: 1px solid #888; */
+	border-radius: 1rem;
 	/* width: 33%; */
 }
 .modalData {
+	box-sizing: border-box;
 	margin-top: 1rem;
 	width: 100%;
 }
 .modalForm {
+	box-sizing: border-box;
 	/* margin-top: 3rem; */
 	width: max-content;
 	display: block;
-	padding: 1rem 2rem;
+	padding: 1rem 1rem 0rem 1rem;
 	margin: 2rem auto;
-	border: 1px solid black;
+	/* border: 1px solid black; */
+}
+label {
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+.inputText {
+	margin-top: 10px;
+	width: auto;
+	font-size: 1.25rem;
+	padding: 10px 1rem;
+	/* border-radius: 10px; */
+	font-size: 18px;
+	/* line-height: 20px; */
+	/* border: 1px solid white; */
+	border-radius: 5px;
+	background-color: black;
 }
 
 /* Radio Buttons */
 .button-container {
 	display: flex;
+	justify-content: space-around;
 	align-items: center;
+	margin-top: 10px;
 }
 
 .radio-button {
@@ -199,21 +220,26 @@ form {
 }
 
 .custom-button {
-	background-color: #007bff;
-	color: #fff;
-	border: none;
+	/* background-color: #007bff; */
+	color: #000;
+	font-size: 1.125rem;
+	font-weight: 200;
+	border: 1px solid blue;
 	border-radius: 3px;
-	padding: 5px 10px;
+	padding: 5px;
 	cursor: pointer;
+	/* margin-top: 10px; */
 }
 /* Radio Buttons End */
 .saveTodoBtn {
-	margin-top: 1rem;
+	margin-top: 2rem;
+	font-size: 16px;
+	font-weight: 700;
 	background-color: #007bff;
 	color: #fff;
 	border: none;
 	border-radius: 3px;
-	padding: 5px 10px;
+	padding: 10px;
 	cursor: pointer;
 }
 
