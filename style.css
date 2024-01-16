@@ -151,7 +151,7 @@ form {
 }
 /* Modal Section */
 .modal {
-	/* display: none; Hidden by default */
+	display: none; /*Hidden by default*/
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Sit on top */
 	padding-top: 100px; /* Location of the box */
@@ -166,20 +166,26 @@ form {
 
 /* Modal Content */
 .modal-content {
+	width: max-content;
+
 	color: black;
 	background-color: #fefefe;
 	margin: auto;
-	padding: 10px;
+	padding: 1rem;
 	border: 1px solid #888;
-	width: max-content;
+	/* width: 33%; */
 }
 .modalData {
 	margin-top: 1rem;
 	width: 100%;
 }
 .modalForm {
+	/* margin-top: 3rem; */
+	width: max-content;
 	display: block;
-	padding-left: 0px;
+	padding: 1rem 2rem;
+	margin: 2rem auto;
+	border: 1px solid black;
 }
 
 /* Radio Buttons */
