@@ -14,3 +14,6 @@ function handleButtonClick(optionId) {
 	// Handle button click here
 	console.log(`Button ${optionId} clicked`);
 }
+function closeModal() {
+	document.getElementById('myModal').style.display = 'none';
+}
