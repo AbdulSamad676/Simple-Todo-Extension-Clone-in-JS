@@ -23,13 +23,13 @@ function openModal() {
 
 // Todos section started Here
 
-let dailyTodos = ['Code'];
+let dailyTodos = ['Code', 'Design', 'Test'];
 // Functions Area
 
 let daily = document.querySelector('.dailyTodos');
 console.log(dailyTodos);
 function display() {
-	console.log(daily.textContent);
+	// console.log(daily.textContent);
 	if (dailyTodos.length === 0) {
 		const li = document.createElement('li');
 		li.className = 'list-item';
@@ -78,10 +78,10 @@ function removeTodo() {
 			// console.log(todos);
 			let p = this.parentElement.firstChild.data;
 			// console.log(this.parentElement.firstChild.data);
-			let remP = todos.findIndex(elem => {
+			let remP = dailyTodos.findIndex(elem => {
 				return elem === p;
 			});
-			todos.splice(remP, 1);
+			dailyTodos.splice(remP, 1);
 			display(); // Display the updated list after removal
 		};
 	});
