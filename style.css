@@ -147,6 +147,7 @@ form {
 	margin: 5px auto;
 	padding: 10px;
 	border-radius: 5px;
+	position: relative;
 	/* text-align: center; */
 }
 /* Modal Section */
@@ -256,4 +257,21 @@ label {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
+}
+.closeBtn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px;
+	cursor: pointer;
+	color: red;
+}
+.editBtn {
+	position: absolute;
+	right: 10%;
+	top: 0;
+	font-size: 18px;
+	padding: 10px;
+	cursor: pointer;
+	color: green;
 }
