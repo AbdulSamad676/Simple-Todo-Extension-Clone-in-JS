@@ -197,6 +197,7 @@ label {
 }
 .inputText {
 	margin-top: 10px;
+	color: white;
 	width: auto;
 	font-size: 1.25rem;
 	padding: 10px 1rem;

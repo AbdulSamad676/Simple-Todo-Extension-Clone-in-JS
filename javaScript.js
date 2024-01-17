@@ -70,16 +70,38 @@ function display() {
 let btns = document.querySelectorAll('.plusBtn');
 btns.forEach(item => {
 	item.onclick = function () {
+		// the parent class os for some useful operations
 		let parentClass = this.parentElement.className;
 		openModal();
 		let submitForm = document.querySelector('.modalForm');
 		// console.log(`modal forn is : ${submitForm.innerHTML}`);
 		submitForm.addEventListener('submit', function (e) {
 			e.preventDefault();
+			let selectedBtnId = '';
 			let selectedInputValue = document.querySelector(
 				'input[type="radio"]:checked'
 			);
-			console.log(selectedInputValue.id);
+			// id of the selected radio button
+			selectedBtnId = selectedInputValue.id;
+			let inputField = document.getElementById('inputText');
+			let formData = new FormData(e.target);
+			let inputData = formData.get('inputText');
+			console.log(`You Entered : ${inputData}`);
+
+			if (selectedBtnId == 'daily') {
+				dailyTodos.push(inputData);
+				// Reset the Input Field
+				inputField = '';
+				// Display Updated Todo
+				display();
+				console.log('Added to daily todos');
+			} else if (selectedBtnId == 'weekly') {
+				console.log('Added to weekly todos');
+			} else if (selectedBtnId == 'eventually') {
+				console.log('Added to eventually todos');
+			} else {
+				alert('Please Select Time option');
+			}
 		});
 	};
 });
@@ -116,4 +138,9 @@ function handleClick(id) {
 	document
 		.querySelector(`label[for="${id}"]`)
 		.classList.add('selected-label');
+
+	// const saveTodoBtn = document.querySelector('.saveTodoBtn');
+	// saveTodoBtn.disabled = !document.querySelector(
+	// 	'input[name="options"]:checked'
+	// );
 }
