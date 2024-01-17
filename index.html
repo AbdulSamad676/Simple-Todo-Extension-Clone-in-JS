@@ -38,7 +38,8 @@
                 <div class="title">
                     <h3>Today</h3>
                 </div>
-                <div class="addDaily"><button><i style="font-size:24px" class="fa">&#xf067;</i></button></div>
+                <div class="addDaily"><button class="plusBtn"><i style="font-size:24px" class="fa">&#xf067;</i></button>
+                </div>
             </div>
             <div>
                 <ul class="dailyTodos list">
@@ -51,7 +52,8 @@
                 <div class="title">
                     <h3>Weekly</h3>
                 </div>
-                <div class="addWeekly"><button><i style="font-size:24px" class="fa">&#xf067;</i></button></div>
+                <div class="addWeekly"><button class="plusBtn"><i style="font-size:24px"
+                            class="fa">&#xf067;</i></button></div>
             </div>
             <div>
                 <ul class="weeklyTodos list">
@@ -67,7 +69,10 @@
                 <div class="title">
                     <h3>Eventually</h3>
                 </div>
-                <div class="addEventually"><button><i style="font-size:24px" class="fa">&#xf067;</i></button></div>
+                <div class="addEventually">
+                    <button class="plusBtn"><i style="font-size:24px" class="fa">&#xf067;</i>
+                    </button>
+                </div>
             </div>
             <div>
                 <ul class="eventualTodos list">
@@ -97,15 +102,15 @@
                         <label for="">When do you want to do</label></br>
 
                         <div class="button-container">
-                            <input type="radio" id="option1" class="radio-button" name="options">
-                            <label for="option1" class="custom-button" onclick="handleButtonClick('option1')">
+                            <input type="radio" id="daily" class=" radio-button" name="options">
+                            <label for="daily" class="custom-button" onclick="handleClick('daily')">
                                 Today</label>
 
-                            <input type="radio" id="option2" class="radio-button" name="options">
-                            <label for="option2" class="custom-button" onclick="handleButtonClick('option2')">
+                            <input type="radio" id="weekly" class="radio-button" name="options">
+                            <label for="weekly" class="custom-button" onclick="handleClick('weekly')">
                                 This Week</label>
-                            <input type="radio" id="option3" class="radio-button" name="options">
-                            <label for="option2" class="custom-button" onclick="handleButtonClick('option3')">
+                            <input type="radio" id="eventually" class="radio-button" name="options">
+                            <label for="eventually" class="custom-button" onclick="handleClick('eventually')">
                                 Eventual</label>
                             <!-- Add more buttons as needed -->
                         </div>
@@ -117,12 +122,12 @@
         </div>
 
     </div>
-    <div style="display: flex; justify-content: center;">
+    <!-- <div style="display: flex; justify-content: center;">
         <button
             style="font-size: 18px;color:white; padding: 10px; border-radius: 5px; border: none; background-color: rgb(3, 3, 255);"
             onclick=openModal()>Open
             Modal</button>
-    </div>
+    </div> -->
 
     <script src="javaScript.js"></script>
     <script src="functions.js"></script>

@@ -27,7 +27,7 @@ let dailyTodos = ['Code', 'Design', 'Test'];
 // Functions Area
 
 let daily = document.querySelector('.dailyTodos');
-console.log(dailyTodos);
+// console.log(dailyTodos);
 function display() {
 	// console.log(daily.textContent);
 	if (dailyTodos.length === 0) {
@@ -60,12 +60,29 @@ function display() {
 			li.appendChild(deleteSpan);
 
 			daily.appendChild(li);
-			console.log(li);
+			// console.log(li);
 		});
 		removeTodo();
 		// editTodo();}
 	}
 }
+// setting for Add todos
+let btns = document.querySelectorAll('.plusBtn');
+btns.forEach(item => {
+	item.onclick = function () {
+		let parentClass = this.parentElement.className;
+		openModal();
+		let submitForm = document.querySelector('.modalForm');
+		// console.log(`modal forn is : ${submitForm.innerHTML}`);
+		submitForm.addEventListener('submit', function (e) {
+			e.preventDefault();
+			let selectedInputValue = document.querySelector(
+				'input[type="radio"]:checked'
+			);
+			console.log(selectedInputValue.id);
+		});
+	};
+});
 
 function removeTodo() {
 	let closeButtons = document.querySelectorAll('.closeBtn');
@@ -88,3 +105,15 @@ function removeTodo() {
 }
 
 display();
+
+function handleClick(id) {
+	// Remove the 'selected-label' class from all labels
+	document.querySelectorAll('.custom-button').forEach(label => {
+		label.classList.remove('selected-label');
+	});
+
+	// Add the 'selected-label' class to the clicked label
+	document
+		.querySelector(`label[for="${id}"]`)
+		.classList.add('selected-label');
+}

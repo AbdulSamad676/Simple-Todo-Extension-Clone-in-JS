@@ -276,3 +276,12 @@ label {
 	cursor: pointer;
 	color: green;
 }
+.plusBtn {
+	cursor: pointer;
+	background: none;
+	color: white;
+	font-weight: 100;
+}
+.selected-label {
+	background-color: #007bff;
+}
