@@ -23,39 +23,48 @@ function openModal() {
 
 // Todos section started Here
 
-let dailyTodos = ['Code', 'Design'];
+let dailyTodos = ['Code'];
 // Functions Area
 
 let daily = document.querySelector('.dailyTodos');
 console.log(dailyTodos);
 function display() {
-	// CLear the Existing List
-	daily.innerHTML = '';
-	dailyTodos.forEach((todo, index) => {
-		// console.log(todo);
+	console.log(daily.textContent);
+	if (dailyTodos.length === 0) {
 		const li = document.createElement('li');
-		// edit sign to each
-		const editSpan = document.createElement('span');
-		editSpan.className = 'editBtn';
-		editSpan.innerHTML = '&#9998;';
-		// delete sign to each list
-		const deleteSpan = document.createElement('span');
-		let txt = document.createTextNode('\u00D7');
-		deleteSpan.className = 'closeBtn';
-		deleteSpan.appendChild(txt);
-		// adding list item to the todos list
-
 		li.className = 'list-item';
-		li.id = index;
-		li.appendChild(document.createTextNode(todo));
-		li.appendChild(editSpan);
-		li.appendChild(deleteSpan);
-
+		let txt = document.createTextNode('No Todo Here!');
+		li.appendChild(txt);
 		daily.appendChild(li);
-		console.log(li);
-	});
-	removeTodo();
-	// editTodo();
+	} else {
+		// CLear the Existing List
+		daily.innerHTML = '';
+		dailyTodos.forEach((todo, index) => {
+			// console.log(todo);
+			const li = document.createElement('li');
+			// edit sign to each
+			const editSpan = document.createElement('span');
+			editSpan.className = 'editBtn';
+			editSpan.innerHTML = '&#9998;';
+			// delete sign to each list
+			const deleteSpan = document.createElement('span');
+			let txt = document.createTextNode('\u00D7');
+			deleteSpan.className = 'closeBtn';
+			deleteSpan.appendChild(txt);
+			// adding list item to the todos list
+
+			li.className = 'list-item';
+			li.id = index;
+			li.appendChild(document.createTextNode(todo));
+			li.appendChild(editSpan);
+			li.appendChild(deleteSpan);
+
+			daily.appendChild(li);
+			console.log(li);
+		});
+		removeTodo();
+		// editTodo();}
+	}
 }
 
 function removeTodo() {

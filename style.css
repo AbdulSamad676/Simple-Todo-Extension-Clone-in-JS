@@ -270,8 +270,8 @@ label {
 .editBtn {
 	position: absolute;
 	right: 10%;
-	top: 0.4375rem;
-	font-size: 18px;
+	top: -6px;
+	font-size: 20px;
 	padding: 10px;
 	cursor: pointer;
 	color: green;
