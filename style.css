@@ -113,21 +113,21 @@ form {
 	padding: 1rem;
 }
 .daily {
-	background-color: #2e2e2e;
+	background-color: rgba(34, 34, 34, 0.8);
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
 	width: 27%;
 	/* border: 1px solid black; */
 }
 .weekly {
-	background-color: #2e2e2e;
+	background-color: rgba(34, 34, 34, 0.8);
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
 	width: 27%;
 	/* border: 1px solid black; */
 }
 .eventual {
-	background-color: #2e2e2e;
+	background-color: rgba(34, 34, 34, 0.8);
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
 	width: 27%;
