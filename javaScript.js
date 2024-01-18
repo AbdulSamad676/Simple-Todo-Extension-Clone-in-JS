@@ -220,8 +220,6 @@ btns.forEach(item => {
 					display();
 					// console.log('Added to eventually todos');
 				}
-			} else {
-				alert('Please Select Time option');
 			}
 			// id of the selected radio button
 		});
