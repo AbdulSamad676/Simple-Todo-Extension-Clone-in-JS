@@ -33,6 +33,9 @@ let weekly = document.querySelector('.weeklyTodos');
 let eventually = document.querySelector('.eventualTodos');
 // console.log(dailyTodos);
 function display() {
+	daily.innerHTML = '';
+	weekly.innerHTML = '';
+	eventually.innerHTML = '';
 	// Daily Todo display section
 	if (dailyTodos.length === 0) {
 		const li = document.createElement('li');
@@ -149,45 +152,78 @@ btns.forEach(item => {
 		// the parent class os for some useful operations
 		let parentClass = this.parentElement.className;
 		openModal();
-		let submitForm = document.querySelector('.modalForm');
-		// console.log(`modal forn is : ${submitForm.innerHTML}`);
+		// let submitForm = document.querySelector('.modalForm');
+		//
+		let submitForm = document.getElementById('modalForm'); // Make sure to replace 'yourFormId' with the actual ID of your form
+
 		submitForm.addEventListener('submit', function (e) {
 			e.preventDefault();
-			let selectedBtnId = '';
+
+			// let selectedBtnId = '';
 			let selectedInputValue = document.querySelector(
 				'input[type="radio"]:checked'
 			);
-			// id of the selected radio button
-			selectedBtnId = selectedInputValue.id;
-			let inputField = document.getElementById('inputText');
-			let formData = new FormData(e.target);
-			let inputData = formData.get('inputText');
-			console.log(`You Entered : ${inputData}`);
+			if (selectedInputValue) {
+				let selectedBtnId = selectedInputValue.id;
 
-			if (selectedBtnId == 'daily') {
-				dailyTodos.push(inputData);
-				// Reset the Input Field
-				inputField = '';
-				// Display Updated Todo
-				display();
-				console.log('Added to daily todos');
-			} else if (selectedBtnId == 'weekly') {
-				weeklyTodos.push(inputData);
-				// Reset the Input Field
-				inputField = '';
-				// Display Updated Todo
-				display();
-				console.log('Added to weekly todos');
-			} else if (selectedBtnId == 'eventually') {
-				eventualyTodos.push(inputData);
-				// Reset the Input Field
-				inputField = '';
-				// Display Updated Todo
-				display();
-				console.log('Added to eventually todos');
+				let inputField = document.getElementById('inputText');
+				let formData = new FormData(e.target);
+				let inputData = formData.get('inputText');
+				console.log(`You Entered: ${inputData}`);
+
+				if (selectedBtnId == 'daily') {
+					dailyTodos.push(inputData);
+					// Reset the Input Field
+					inputField.value = ''; // Fixed: Reset the input field value
+
+					// Uncheck the selected radio button
+					selectedInputValue.checked = false;
+
+					// remove selected class
+					removeLabel();
+
+					// remove class end
+					selectedBtnId = '';
+					closeModal();
+					display();
+				} else if (selectedBtnId == 'weekly') {
+					weeklyTodos.push(inputData);
+					// Reset the Input Field
+					inputField.value = ''; // Fixed: Reset the input field value
+
+					// Uncheck the selected radio button
+					selectedInputValue.checked = false;
+
+					// remove selected class
+					removeLabel();
+
+					// remove class end
+					selectedBtnId = '';
+					closeModal();
+					// Display Updated Todo
+					display();
+					// console.log('Added to weekly todos');
+				} else if (selectedBtnId == 'eventually') {
+					eventualyTodos.push(inputData);
+					inputField.value = ''; // Fixed: Reset the input field value
+
+					// Uncheck the selected radio button
+					selectedInputValue.checked = false;
+
+					// remove selected class
+					removeLabel();
+
+					// remove class end
+					selectedBtnId = '';
+					closeModal();
+					// Display Updated Todo
+					display();
+					// console.log('Added to eventually todos');
+				}
 			} else {
 				alert('Please Select Time option');
 			}
+			// id of the selected radio button
 		});
 	};
 });
@@ -244,4 +280,9 @@ function handleClick(id) {
 	// saveTodoBtn.disabled = !document.querySelector(
 	// 	'input[name="options"]:checked'
 	// );
+}
+function removeLabel() {
+	document.querySelectorAll('.custom-button').forEach(label => {
+		label.classList.remove('selected-label');
+	});
 }
