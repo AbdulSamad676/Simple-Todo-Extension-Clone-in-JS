@@ -24,12 +24,16 @@ function openModal() {
 // Todos section started Here
 
 let dailyTodos = ['Code', 'Design', 'Test'];
+let weeklyTodos = ['Code', 'Design', 'Test'];
+let eventualyTodos = ['Code', 'Design', 'Test'];
 // Functions Area
 
 let daily = document.querySelector('.dailyTodos');
+let weekly = document.querySelector('.weeklyTodos');
+let eventually = document.querySelector('.eventualTodos');
 // console.log(dailyTodos);
 function display() {
-	// console.log(daily.textContent);
+	// Daily Todo display section
 	if (dailyTodos.length === 0) {
 		const li = document.createElement('li');
 		li.className = 'list-item';
@@ -60,6 +64,78 @@ function display() {
 			li.appendChild(deleteSpan);
 
 			daily.appendChild(li);
+			// console.log(li);
+		});
+		removeTodo();
+		// editTodo();}
+	}
+	// Weekly Todo display section
+	if (weeklyTodos.length === 0) {
+		const li = document.createElement('li');
+		li.className = 'list-item';
+		let txt = document.createTextNode('No Todo Here!');
+		li.appendChild(txt);
+		weekly.appendChild(li);
+	} else {
+		// CLear the Existing List
+		weekly.innerHTML = '';
+		weeklyTodos.forEach((todo, index) => {
+			// console.log(todo);
+			const li = document.createElement('li');
+			// edit sign to each
+			const editSpan = document.createElement('span');
+			editSpan.className = 'editBtn';
+			editSpan.innerHTML = '&#9998;';
+			// delete sign to each list
+			const deleteSpan = document.createElement('span');
+			let txt = document.createTextNode('\u00D7');
+			deleteSpan.className = 'closeBtn';
+			deleteSpan.appendChild(txt);
+			// adding list item to the todos list
+
+			li.className = 'list-item';
+			li.id = index;
+			li.appendChild(document.createTextNode(todo));
+			li.appendChild(editSpan);
+			li.appendChild(deleteSpan);
+
+			weekly.appendChild(li);
+			// console.log(li);
+		});
+		removeTodo();
+		// editTodo();}
+	}
+	// Eventually Todo display section
+	if (eventualyTodos.length === 0) {
+		const li = document.createElement('li');
+		li.className = 'list-item';
+		let txt = document.createTextNode('No Todo Here!');
+		li.appendChild(txt);
+		eventually.appendChild(li);
+	} else {
+		// CLear the Existing List
+		eventually.innerHTML = '';
+		eventualyTodos.forEach((todo, index) => {
+			// console.log(todo);
+			const li = document.createElement('li');
+			// edit sign to each
+			const editSpan = document.createElement('span');
+			editSpan.className = 'editBtn';
+			editSpan.innerHTML = '&#9998;';
+			// delete sign to each list
+			const deleteSpan = document.createElement('span');
+			let txt = document.createTextNode('\u00D7');
+			deleteSpan.className = 'closeBtn';
+			deleteSpan.appendChild(txt);
+			// adding list item to the todos list
+
+			li.className = 'list-item';
+			li.id = index;
+			li.appendChild(document.createTextNode(todo));
+			li.appendChild(editSpan);
+			li.appendChild(deleteSpan);
+
+			eventually.appendChild(li);
 			// console.log(li);
 		});
 		removeTodo();
@@ -120,7 +196,16 @@ function removeTodo() {
 			let remP = dailyTodos.findIndex(elem => {
 				return elem === p;
 			});
-			dailyTodos.splice(remP, 1);
+			console.log(parent.parentNode.className);
+			grandParentNode = parent.parentNode.className;
+			if (grandParentNode === 'dailyTodos list') {
+				dailyTodos.splice(remP, 1);
+			} else if (grandParentNode === 'weeklyTodos list') {
+				weeklyTodos.splice(remP, 1);
+			} else {
+				eventualyTodos.splice(remP, 1);
+			}
+
 			display(); // Display the updated list after removal
 		};
 	});
