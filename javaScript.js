@@ -23,9 +23,9 @@ function openModal() {
 
 // Todos section started Here
 
-let dailyTodos = ['Code', 'Design', 'Test'];
-let weeklyTodos = ['Code', 'Design', 'Test'];
-let eventualyTodos = ['Code', 'Design', 'Test'];
+let dailyTodos = [];
+let weeklyTodos = [];
+let eventualyTodos = [];
 // Functions Area
 
 let daily = document.querySelector('.dailyTodos');
@@ -172,8 +172,18 @@ btns.forEach(item => {
 				display();
 				console.log('Added to daily todos');
 			} else if (selectedBtnId == 'weekly') {
+				weeklyTodos.push(inputData);
+				// Reset the Input Field
+				inputField = '';
+				// Display Updated Todo
+				display();
 				console.log('Added to weekly todos');
 			} else if (selectedBtnId == 'eventually') {
+				eventualyTodos.push(inputData);
+				// Reset the Input Field
+				inputField = '';
+				// Display Updated Todo
+				display();
 				console.log('Added to eventually todos');
 			} else {
 				alert('Please Select Time option');
@@ -196,11 +206,17 @@ function removeTodo() {
 			let remP = dailyTodos.findIndex(elem => {
 				return elem === p;
 			});
+			// getting grand parent of the icon
+			// which is daily or weekly or eventually
 			console.log(parent.parentNode.className);
 			grandParentNode = parent.parentNode.className;
-			if (grandParentNode === 'dailyTodos list') {
+			// I have two classes in the grandParent tag
+			// let's split that into parentClass and commonClass
+			let [parentClass, commonClass] = grandParentNode.split(' ');
+			// console.log(`first ${firstWord}`);
+			if (parentClass === 'dailyTodos') {
 				dailyTodos.splice(remP, 1);
-			} else if (grandParentNode === 'weeklyTodos list') {
+			} else if (parentClass === 'weeklyTodos') {
 				weeklyTodos.splice(remP, 1);
 			} else {
 				eventualyTodos.splice(remP, 1);
