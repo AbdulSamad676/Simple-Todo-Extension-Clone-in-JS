@@ -286,3 +286,9 @@ label {
 .selected-label {
 	background-color: #007bff;
 }
+
+.completed {
+	text-decoration: line-through;
+	color: #007bff;
+	font-weight: 700;
+}

@@ -65,13 +65,26 @@ function display() {
 			li.appendChild(document.createTextNode(todo));
 			li.appendChild(editSpan);
 			li.appendChild(deleteSpan);
-
 			daily.appendChild(li);
+			// li.addEventListener('click', function (e) {
+			// 	console.log(e.target);
+			// 	checkedLi = e.target;
+			// 	checkedLi.className = 'completed';
+			li.addEventListener('click', function (e) {
+				console.log(e.target);
+				checkedLi = e.target;
+
+				// Toggle the 'completed' class
+				checkedLi.classList.toggle('completed');
+			});
+			// });
 			// console.log(li);
 		});
 		removeTodo();
+		// doneTodo();
 		// editTodo();}
 	}
+
 	// Weekly Todo display section
 	if (weeklyTodos.length === 0) {
 		const li = document.createElement('li');
@@ -106,6 +119,7 @@ function display() {
 			// console.log(li);
 		});
 		removeTodo();
+
 		// editTodo();}
 	}
 	// Eventually Todo display section
@@ -142,8 +156,82 @@ function display() {
 			// console.log(li);
 		});
 		removeTodo();
+
 		// editTodo();}
 	}
+}
+function addTodo() {
+	openModal();
+	let submitForm = document.getElementById('modalForm'); // Make sure to replace 'yourFormId' with the actual ID of your form
+
+	submitForm.addEventListener('submit', function (e) {
+		e.preventDefault();
+
+		// let selectedBtnId = '';
+		let selectedInputValue = document.querySelector(
+			'input[type="radio"]:checked'
+		);
+		if (selectedInputValue) {
+			let selectedBtnId = selectedInputValue.id;
+
+			let inputField = document.getElementById('inputText');
+			let formData = new FormData(e.target);
+			let inputData = formData.get('inputText');
+			console.log(`You Entered: ${inputData}`);
+
+			if (selectedBtnId == 'daily') {
+				dailyTodos.push(inputData);
+				// Reset the Input Field
+				inputField.value = ''; // Fixed: Reset the input field value
+
+				// Uncheck the selected radio button
+				selectedInputValue.checked = false;
+
+				// remove selected class
+				removeLabel();
+
+				// remove class end
+				selectedBtnId = '';
+				closeModal();
+				display();
+			} else if (selectedBtnId == 'weekly') {
+				weeklyTodos.push(inputData);
+				// Reset the Input Field
+				inputField.value = ''; // Fixed: Reset the input field value
+
+				// Uncheck the selected radio button
+				selectedInputValue.checked = false;
+
+				// remove selected class
+				removeLabel();
+
+				// remove class end
+				selectedBtnId = '';
+				closeModal();
+				// Display Updated Todo
+				display();
+				// console.log('Added to weekly todos');
+			} else if (selectedBtnId == 'eventually') {
+				eventualyTodos.push(inputData);
+				inputField.value = ''; // Fixed: Reset the input field value
+
+				// Uncheck the selected radio button
+				selectedInputValue.checked = false;
+
+				// remove selected class
+				removeLabel();
+
+				// remove class end
+				selectedBtnId = '';
+				closeModal();
+				// Display Updated Todo
+				display();
+				// console.log('Added to eventually todos');
+			}
+		}
+		// id of the selected radio button
+	});
+	console.log('AddTodo function is in');
 }
 // setting for Add todos
 let btns = document.querySelectorAll('.plusBtn');
@@ -284,3 +372,5 @@ function removeLabel() {
 		label.classList.remove('selected-label');
 	});
 }
+
+// RemoveDone functionality Part
