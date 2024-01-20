@@ -388,3 +388,13 @@ function removeLabel() {
 }
 
 // RemoveDone functionality Part
+
+function removeDone() {
+	let doneTodos = document.querySelectorAll('.completed');
+
+	doneTodos.forEach(todo => {
+		console.log(todo);
+		todo.style.display = 'none';
+		// location.reload();
+	});
+}
