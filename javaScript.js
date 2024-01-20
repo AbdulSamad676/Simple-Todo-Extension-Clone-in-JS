@@ -116,6 +116,13 @@ function display() {
 			li.appendChild(deleteSpan);
 
 			weekly.appendChild(li);
+			li.addEventListener('click', function (e) {
+				console.log(e.target);
+				checkedLi = e.target;
+
+				// Toggle the 'completed' class
+				checkedLi.classList.toggle('completed');
+			});
 			// console.log(li);
 		});
 		removeTodo();
@@ -153,6 +160,13 @@ function display() {
 			li.appendChild(deleteSpan);
 
 			eventually.appendChild(li);
+			li.addEventListener('click', function (e) {
+				console.log(e.target);
+				checkedLi = e.target;
+
+				// Toggle the 'completed' class
+				checkedLi.classList.toggle('completed');
+			});
 			// console.log(li);
 		});
 		removeTodo();

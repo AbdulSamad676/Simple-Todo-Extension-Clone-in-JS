@@ -117,6 +117,7 @@ form {
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
 	width: 27%;
+	height: max-content;
 	/* border: 1px solid black; */
 }
 .weekly {
@@ -124,6 +125,7 @@ form {
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
 	width: 27%;
+	height: max-content;
 	/* border: 1px solid black; */
 }
 .eventual {
@@ -131,6 +133,7 @@ form {
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
 	width: 27%;
+	height: max-content;
 	/* border: 1px solid black; */
 }
 .dataHeader {
