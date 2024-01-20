@@ -389,12 +389,71 @@ function removeLabel() {
 
 // RemoveDone functionality Part
 
+// function removeDone() {
+// 	let doneTodos = document.querySelectorAll('.completed');
+
+// 	doneTodos.forEach(doneTodo => {
+// 		// Assuming each todo has a unique identifier like 'id'
+// 		let todoId = doneTodo.id;
+// 		console.log(todoId);
+
+// 		// Check in dailyTodos
+// 		let dailyIndex = dailyTodos.findIndex(todo => todo.id === todoId);
+// 		if (dailyIndex !== -1) {
+// 			dailyTodos.splice(dailyIndex, 1);
+// 		}
+
+// 		// Check in weeklyTodos
+// 		let weeklyIndex = weeklyTodos.findIndex(todo => todo.id === todoId);
+// 		if (weeklyIndex !== -1) {
+// 			weeklyTodos.splice(weeklyIndex, 1);
+// 		}
+
+// 		// Check in eventuallyTodos
+// 		let eventuallyIndex = eventualyTodos.findIndex(
+// 			todo => todo.id === todoId
+// 		);
+// 		if (eventuallyIndex !== -1) {
+// 			eventualyTodos.splice(eventuallyIndex, 1);
+// 		}
+
+// 		// Remove the todo from the DOM
+// 		doneTodo.remove();
+// 		// display();
+// 	});
+
+// 	// Log the updated arrays to the console
+// 	console.log('Daily Todos:', dailyTodos);
+// 	console.log('Weekly Todos:', weeklyTodos);
+// 	console.log('Eventually Todos:', eventualyTodos);
+
+// 	// After updating the arrays, you can choose to update the UI or perform any other necessary actions
+// 	// UpdateUI();
+// 	// display();
+// }
+
 function removeDone() {
 	let doneTodos = document.querySelectorAll('.completed');
 
-	doneTodos.forEach(todo => {
-		console.log(todo);
-		todo.style.display = 'none';
-		// location.reload();
+	doneTodos.forEach(doneTodo => {
+		// Assuming each todo has a unique identifier like 'id'
+		let todoId = doneTodo.id;
+		console.log(todoId);
+		// Create new arrays without the completed todo
+		dailyTodos = dailyTodos.filter(todo => todo.id !== todoId);
+		weeklyTodos = weeklyTodos.filter(todo => todo.id !== todoId);
+		eventualyTodos = eventualyTodos.filter(todo => todo.id !== todoId);
+
+		// Remove the todo from the DOM
+		doneTodo.remove();
 	});
+
+	// Log the updated arrays to the console
+	console.log('Daily Todos:', dailyTodos);
+	console.log('Weekly Todos:', weeklyTodos);
+	console.log('Eventually Todos:', eventualyTodos);
+
+	// After updating the arrays, you can choose to update the UI or perform any other necessary actions
+	// UpdateUI();
+	//display();
 }
