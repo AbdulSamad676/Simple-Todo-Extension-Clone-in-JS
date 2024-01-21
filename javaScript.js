@@ -61,8 +61,8 @@ function display() {
 			// adding list item to the todos list
 
 			li.className = 'list-item';
-			li.id = index;
-			li.appendChild(document.createTextNode(todo));
+			li.id = todo.id;
+			li.appendChild(document.createTextNode(todo.text));
 			li.appendChild(editSpan);
 			li.appendChild(deleteSpan);
 			daily.appendChild(li);
@@ -110,8 +110,8 @@ function display() {
 			// adding list item to the todos list
 
 			li.className = 'list-item';
-			li.id = index;
-			li.appendChild(document.createTextNode(todo));
+			li.id = todo.id;
+			li.appendChild(document.createTextNode(todo.text));
 			li.appendChild(editSpan);
 			li.appendChild(deleteSpan);
 
@@ -154,8 +154,8 @@ function display() {
 			// adding list item to the todos list
 
 			li.className = 'list-item';
-			li.id = index;
-			li.appendChild(document.createTextNode(todo));
+			li.id = todo.id;
+			li.appendChild(document.createTextNode(todo.text));
 			li.appendChild(editSpan);
 			li.appendChild(deleteSpan);
 
@@ -174,156 +174,172 @@ function display() {
 		// editTodo();}
 	}
 }
+// function addTodo() {
+// 	openModal();
+// 	let submitForm = document.getElementById('modalForm'); // Make sure to replace 'yourFormId' with the actual ID of your form
+
+// 	submitForm.addEventListener('submit', function (e) {
+// 		e.preventDefault();
+
+// 		// let selectedBtnId = '';
+// 		let selectedInputValue = document.querySelector(
+// 			'input[type="radio"]:checked'
+// 		);
+// 		if (selectedInputValue) {
+// 			let selectedBtnId = selectedInputValue.id;
+
+// 			let inputField = document.getElementById('inputText');
+// 			let formData = new FormData(e.target);
+// 			let inputData = formData.get('inputText');
+// 			console.log(`You Entered: ${inputData}`);
+
+// 			if (selectedBtnId == 'daily') {
+// 				dailyTodos.push(inputData);
+// 				// Reset the Input Field
+// 				inputField.value = ''; // Fixed: Reset the input field value
+
+// 				// Uncheck the selected radio button
+// 				selectedInputValue.checked = false;
+
+// 				// remove selected class
+// 				removeLabel();
+
+// 				// remove class end
+// 				selectedBtnId = '';
+// 				closeModal();
+// 				display();
+// 			} else if (selectedBtnId == 'weekly') {
+// 				weeklyTodos.push(inputData);
+// 				// Reset the Input Field
+// 				inputField.value = ''; // Fixed: Reset the input field value
+
+// 				// Uncheck the selected radio button
+// 				selectedInputValue.checked = false;
+
+// 				// remove selected class
+// 				removeLabel();
+
+// 				// remove class end
+// 				selectedBtnId = '';
+// 				closeModal();
+// 				// Display Updated Todo
+// 				display();
+// 				// console.log('Added to weekly todos');
+// 			} else if (selectedBtnId == 'eventually') {
+// 				eventualyTodos.push(inputData);
+// 				inputField.value = ''; // Fixed: Reset the input field value
+
+// 				// Uncheck the selected radio button
+// 				selectedInputValue.checked = false;
+
+// 				// remove selected class
+// 				removeLabel();
+
+// 				// remove class end
+// 				selectedBtnId = '';
+// 				closeModal();
+// 				// Display Updated Todo
+// 				display();
+// 				// console.log('Added to eventually todos');
+// 			}
+// 		}
+// 		// id of the selected radio button
+// 	});
+// 	console.log('AddTodo function is in');
+// }
+
 function addTodo() {
 	openModal();
-	let submitForm = document.getElementById('modalForm'); // Make sure to replace 'yourFormId' with the actual ID of your form
+
+	let submitForm = document.getElementById('modalForm');
 
 	submitForm.addEventListener('submit', function (e) {
 		e.preventDefault();
 
-		// let selectedBtnId = '';
 		let selectedInputValue = document.querySelector(
 			'input[type="radio"]:checked'
 		);
+
 		if (selectedInputValue) {
 			let selectedBtnId = selectedInputValue.id;
 
 			let inputField = document.getElementById('inputText');
 			let formData = new FormData(e.target);
 			let inputData = formData.get('inputText');
-			console.log(`You Entered: ${inputData}`);
+
+			let todo = {
+				id: new Date().getTime(), // Unique ID using timestamp
+				text: inputData,
+			};
 
 			if (selectedBtnId == 'daily') {
-				dailyTodos.push(inputData);
-				// Reset the Input Field
-				inputField.value = ''; // Fixed: Reset the input field value
-
-				// Uncheck the selected radio button
+				dailyTodos.push(todo);
+				inputField.value = '';
 				selectedInputValue.checked = false;
-
-				// remove selected class
 				removeLabel();
-
-				// remove class end
-				selectedBtnId = '';
 				closeModal();
 				display();
 			} else if (selectedBtnId == 'weekly') {
-				weeklyTodos.push(inputData);
-				// Reset the Input Field
-				inputField.value = ''; // Fixed: Reset the input field value
-
-				// Uncheck the selected radio button
+				weeklyTodos.push(todo);
+				inputField.value = '';
 				selectedInputValue.checked = false;
-
-				// remove selected class
 				removeLabel();
-
-				// remove class end
-				selectedBtnId = '';
 				closeModal();
-				// Display Updated Todo
 				display();
-				// console.log('Added to weekly todos');
 			} else if (selectedBtnId == 'eventually') {
-				eventualyTodos.push(inputData);
-				inputField.value = ''; // Fixed: Reset the input field value
-
-				// Uncheck the selected radio button
+				eventualyTodos.push(todo);
+				inputField.value = '';
 				selectedInputValue.checked = false;
-
-				// remove selected class
 				removeLabel();
-
-				// remove class end
-				selectedBtnId = '';
 				closeModal();
-				// Display Updated Todo
 				display();
-				// console.log('Added to eventually todos');
 			}
 		}
-		// id of the selected radio button
 	});
-	console.log('AddTodo function is in');
 }
+
 // setting for Add todos
 let btns = document.querySelectorAll('.plusBtn');
 btns.forEach(item => {
 	item.onclick = function () {
-		// the parent class os for some useful operations
 		let parentClass = this.parentElement.className;
 		openModal();
-		// let submitForm = document.querySelector('.modalForm');
-		//
-		let submitForm = document.getElementById('modalForm'); // Make sure to replace 'yourFormId' with the actual ID of your form
+
+		let submitForm = document.getElementById('modalForm');
 
 		submitForm.addEventListener('submit', function (e) {
 			e.preventDefault();
 
-			// let selectedBtnId = '';
 			let selectedInputValue = document.querySelector(
 				'input[type="radio"]:checked'
 			);
+
 			if (selectedInputValue) {
 				let selectedBtnId = selectedInputValue.id;
 
 				let inputField = document.getElementById('inputText');
 				let formData = new FormData(e.target);
 				let inputData = formData.get('inputText');
-				console.log(`You Entered: ${inputData}`);
+
+				let todo = {
+					id: new Date().getTime(), // Unique ID using timestamp
+					text: inputData,
+				};
 
 				if (selectedBtnId == 'daily') {
-					dailyTodos.push(inputData);
-					// Reset the Input Field
-					inputField.value = ''; // Fixed: Reset the input field value
-
-					// Uncheck the selected radio button
-					selectedInputValue.checked = false;
-
-					// remove selected class
-					removeLabel();
-
-					// remove class end
-					selectedBtnId = '';
-					closeModal();
-					display();
+					dailyTodos.push(todo);
 				} else if (selectedBtnId == 'weekly') {
-					weeklyTodos.push(inputData);
-					// Reset the Input Field
-					inputField.value = ''; // Fixed: Reset the input field value
-
-					// Uncheck the selected radio button
-					selectedInputValue.checked = false;
-
-					// remove selected class
-					removeLabel();
-
-					// remove class end
-					selectedBtnId = '';
-					closeModal();
-					// Display Updated Todo
-					display();
-					// console.log('Added to weekly todos');
+					weeklyTodos.push(todo);
 				} else if (selectedBtnId == 'eventually') {
-					eventualyTodos.push(inputData);
-					inputField.value = ''; // Fixed: Reset the input field value
-
-					// Uncheck the selected radio button
-					selectedInputValue.checked = false;
-
-					// remove selected class
-					removeLabel();
-
-					// remove class end
-					selectedBtnId = '';
-					closeModal();
-					// Display Updated Todo
-					display();
-					// console.log('Added to eventually todos');
+					eventualyTodos.push(todo);
 				}
+
+				inputField.value = '';
+				selectedInputValue.checked = false;
+				removeLabel();
+				closeModal();
+				display();
 			}
-			// id of the selected radio button
 		});
 	};
 });
@@ -375,11 +391,6 @@ function handleClick(id) {
 	document
 		.querySelector(`label[for="${id}"]`)
 		.classList.add('selected-label');
-
-	// const saveTodoBtn = document.querySelector('.saveTodoBtn');
-	// saveTodoBtn.disabled = !document.querySelector(
-	// 	'input[name="options"]:checked'
-	// );
 }
 function removeLabel() {
 	document.querySelectorAll('.custom-button').forEach(label => {
@@ -387,38 +398,12 @@ function removeLabel() {
 	});
 }
 
-// RemoveDone functionality Part
-
-// function removeDone() {
-// 	let doneTodos = document.querySelectorAll('.completed');
-
-// 	doneTodos.forEach(doneTodo => {
-// 		// Taking each todo 'id' for comparison
-// 		let todoId = doneTodo.id;
-// 		console.log(todoId);
-// 		// Create new arrays without the completed todo
-// 		dailyTodos = dailyTodos.filter(todo => todo.id !== todoId);
-// 		weeklyTodos = weeklyTodos.filter(todo => todo.id !== todoId);
-// 		eventualyTodos = eventualyTodos.filter(todo => todo.id !== todoId);
-
-// 		// Remove the todo from the DOM
-// 		doneTodo.remove();
-// 	});
-
-// 	// Log the updated arrays to the console
-// 	console.log('Daily Todos:', dailyTodos);
-// 	console.log('Weekly Todos:', weeklyTodos);
-// 	console.log('Eventually Todos:', eventualyTodos);
-
-// 	// After updating the arrays, you can choose to update the UI or perform any other necessary actions
-
-// 	//display();
-// }
 function removeDone() {
 	let doneTodos = document.querySelectorAll('.completed');
 
 	doneTodos.forEach(doneTodo => {
-		let todoId = doneTodo.id;
+		let todoId = parseInt(doneTodo.id); // Convert to number
+		console.log(`todo id ${todoId}`);
 
 		dailyTodos = dailyTodos.filter(todo => todo.id !== todoId);
 		weeklyTodos = weeklyTodos.filter(todo => todo.id !== todoId);
@@ -427,7 +412,12 @@ function removeDone() {
 		doneTodo.remove();
 	});
 
-	// display(); // Call the display function after removing completed todos
+	console.log('Updated Arrays:');
+	console.log('daily:', dailyTodos);
+	console.log('weekly:', weeklyTodos);
+	console.log('eventually:', eventualyTodos);
+
+	display(); // Call the display function after removing completed todos
 }
 
 // remove Done ends Here
