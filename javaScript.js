@@ -20,6 +20,9 @@ function closeModal() {
 function openModal() {
 	document.getElementById('myModal').style.display = 'block';
 }
+function openUpdateModal() {
+	document.getElementById('updateModal').style.display = 'block';
+}
 
 // Todos section started Here
 
@@ -174,80 +177,8 @@ function display() {
 		// editTodo();}
 	}
 }
-// function addTodo() {
-// 	openModal();
-// 	let submitForm = document.getElementById('modalForm'); // Make sure to replace 'yourFormId' with the actual ID of your form
 
-// 	submitForm.addEventListener('submit', function (e) {
-// 		e.preventDefault();
-
-// 		// let selectedBtnId = '';
-// 		let selectedInputValue = document.querySelector(
-// 			'input[type="radio"]:checked'
-// 		);
-// 		if (selectedInputValue) {
-// 			let selectedBtnId = selectedInputValue.id;
-
-// 			let inputField = document.getElementById('inputText');
-// 			let formData = new FormData(e.target);
-// 			let inputData = formData.get('inputText');
-// 			console.log(`You Entered: ${inputData}`);
-
-// 			if (selectedBtnId == 'daily') {
-// 				dailyTodos.push(inputData);
-// 				// Reset the Input Field
-// 				inputField.value = ''; // Fixed: Reset the input field value
-
-// 				// Uncheck the selected radio button
-// 				selectedInputValue.checked = false;
-
-// 				// remove selected class
-// 				removeLabel();
-
-// 				// remove class end
-// 				selectedBtnId = '';
-// 				closeModal();
-// 				display();
-// 			} else if (selectedBtnId == 'weekly') {
-// 				weeklyTodos.push(inputData);
-// 				// Reset the Input Field
-// 				inputField.value = ''; // Fixed: Reset the input field value
-
-// 				// Uncheck the selected radio button
-// 				selectedInputValue.checked = false;
-
-// 				// remove selected class
-// 				removeLabel();
-
-// 				// remove class end
-// 				selectedBtnId = '';
-// 				closeModal();
-// 				// Display Updated Todo
-// 				display();
-// 				// console.log('Added to weekly todos');
-// 			} else if (selectedBtnId == 'eventually') {
-// 				eventualyTodos.push(inputData);
-// 				inputField.value = ''; // Fixed: Reset the input field value
-
-// 				// Uncheck the selected radio button
-// 				selectedInputValue.checked = false;
-
-// 				// remove selected class
-// 				removeLabel();
-
-// 				// remove class end
-// 				selectedBtnId = '';
-// 				closeModal();
-// 				// Display Updated Todo
-// 				display();
-// 				// console.log('Added to eventually todos');
-// 			}
-// 		}
-// 		// id of the selected radio button
-// 	});
-// 	console.log('AddTodo function is in');
-// }
-
+// function add todo start here
 function addTodo() {
 	openModal();
 

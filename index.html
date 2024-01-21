@@ -116,12 +116,51 @@
         </div>
 
     </div>
-    <!-- <div style="display: flex; justify-content: center;">
+
+
+    <!-- The Update Todo Modal -->
+    <div id="updateModal" class="updateModal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick=closeModal()>&times;</span>
+            <div class="updateModalData">
+                <form class="updateModalForm" action="" id="updateModalForm">
+                    <div class="inputSection">
+                        <label for="">What do you want to do</label></br>
+                        <input class="updateText" type="text" name="updateText" id="updateText" required>
+                    </div>
+                    <br>
+                    <div class="selectSection">
+                        <label for="">When do you want to do</label></br>
+
+                        <div class="button-container">
+                            <input type="radio" id="daily" class=" radio-button" name="options">
+                            <label for="daily" class="custom-button" onclick="handleClick('daily')">
+                                Today</label>
+
+                            <input type="radio" id="weekly" class="radio-button" name="options">
+                            <label for="weekly" class="custom-button" onclick="handleClick('weekly')">
+                                This Week</label>
+                            <input type="radio" id="eventually" class="radio-button" name="options">
+                            <label for="eventually" class="custom-button" onclick="handleClick('eventually')">
+                                Eventual</label>
+                            <!-- Add more buttons as needed -->
+                        </div>
+                    </div>
+                    <button class="saveTodoBtn" type="submit">Update Todo</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <div style="display: flex; justify-content: center;">
         <button
             style="font-size: 18px;color:white; padding: 10px; border-radius: 5px; border: none; background-color: rgb(3, 3, 255);"
-            onclick=openModal()>Open
+            onclick=openUpdateModal()>Open
             Modal</button>
-    </div> -->
+    </div>
     <!-- <script src="updatedJS.js"></script> -->
     <script src="javaScript.js"></script>
     <!-- <script src="functions.js"></script> -->
