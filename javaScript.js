@@ -359,6 +359,8 @@ function removeDone() {
 
 //  Update / Edit Todo  Starts Here
 
+let updateFormSubmitHandler;
+
 function editTodo() {
 	// Edit functionality
 	// Get the modal
@@ -398,7 +400,19 @@ function editTodo() {
 
 				const updateFormData = new FormData(e.target);
 				let updateData = updateFormData.get('updateText');
-				// if (parentClass === 'dailtTodo') {
+				let todo = {
+					todoId: id, // Unique ID using timestamp
+					text: updateData,
+				};
+				console.log(`Clicked todo: ${todo.text}`);
+
+				// selected Radio section
+				let selectedInputValue = document.querySelector(
+					'input[type="radio"]:checked'
+				);
+				// selected Radio section ends
+
+				// if (parentClass === 'dailyTodos') {
 				// 	// Ensure the editId is a valid index
 				// 	if (id >= 0 && id < dailyTodos.length) {
 				// 		// Update the todo at the specified index (id)
@@ -451,7 +465,7 @@ function editTodo() {
 				// 	modal.style.display = 'none';
 			};
 
-			// updateForm.addEventListener('submit', updateFormSubmitHandler);
+			updateForm.addEventListener('submit', updateFormSubmitHandler);
 
 			var span = document.getElementsByClassName('close')[0];
 			// modal.style.display = 'block';
