@@ -1,11 +1,11 @@
 const currenDate = {
 	weekday: 'long',
-	year: 'numeric',
+	// year: 'numeric',
 	month: 'long',
 	day: 'numeric',
 };
 // en-US is for format date
-const today = new Date().toLocaleDateString('en-US', currenDate);
+const today = new Date().toLocaleDateString('en-PK', currenDate);
 
 console.log(today);
 document.getElementById('date').textContent = today;
@@ -23,6 +23,9 @@ function openModal() {
 function openUpdateModal() {
 	document.getElementById('updateModal').style.display = 'block';
 }
+function closeUpdateModal() {
+	document.getElementById('updateModal').style.display = 'none';
+}
 
 // Todos section started Here
 
@@ -34,6 +37,7 @@ let eventualyTodos = [];
 let daily = document.querySelector('.dailyTodos');
 let weekly = document.querySelector('.weeklyTodos');
 let eventually = document.querySelector('.eventualTodos');
+
 // console.log(dailyTodos);
 function display() {
 	daily.innerHTML = '';
@@ -85,7 +89,7 @@ function display() {
 		});
 		removeTodo();
 		// doneTodo();
-		// editTodo();}
+		editTodo();
 	}
 
 	// Weekly Todo display section
@@ -130,7 +134,7 @@ function display() {
 		});
 		removeTodo();
 
-		// editTodo();}
+		editTodo();
 	}
 	// Eventually Todo display section
 	if (eventualyTodos.length === 0) {
@@ -173,7 +177,7 @@ function display() {
 			// console.log(li);
 		});
 		removeTodo();
-
+		editTodo();
 		// editTodo();}
 	}
 }
@@ -353,4 +357,81 @@ function removeDone() {
 
 // remove Done ends Here
 
-//  Update Todo
+//  Update / Edit Todo  Starts Here
+
+function editTodo() {
+	// Edit functionality
+	// Get the modal
+	var modal = document.getElementById('updateModal');
+
+	// Get the button that opens the modal
+	// var btn = document.getElementById('myBtn');
+	let editbtns = document.querySelectorAll('.editBtn');
+	// console.log(editbtns);
+	// Get the <span> element that closes the modal
+	let myedit = Array.from(editbtns);
+	console.log(myedit);
+	myedit.forEach(btn => {
+		btn.addEventListener('click', function (e) {
+			openUpdateModal();
+			console.log(e.target.parentElement.parentElement);
+			let parent = e.target.parentElement;
+			let grandParentNode = parent.parentElement.className;
+			let [parentClass, commonClass] = grandParentNode.split(' ');
+
+			let id = e.target.parentElement.id;
+
+			console.log(`parent element is ${parent.className}`);
+			console.log(`grandParent element is ${parentClass}`);
+
+			// Move updateForm declaration to the outer scope
+			// let updateForm = document.querySelector('.updateForm');
+
+			// Remove existing event listener
+			// updateForm.removeEventListener('submit', updateFormSubmitHandler);
+
+			// Add event listener for this instance
+			// updateFormSubmitHandler = function (e) {
+			// 	e.preventDefault();
+
+			// 	let updateField = document.getElementById('updateText');
+
+			// 	const updateFormData = new FormData(e.target);
+			// 	let updateData = updateFormData.get('updateText');
+
+			// 	// Ensure the editId is a valid index
+			// 	if (id >= 0 && id < todos.length) {
+			// 		// Update the todo at the specified index (id)
+			// 		todos[id] = updateData;
+
+			// 		// Display the updated todos
+			// 		display();
+			// 		updateField.value = '';
+			// 	} else {
+			// 		console.error('Invalid id:', id);
+			// 	}
+
+			// 	// Close the modal
+			// 	var modal = document.getElementById('myModal');
+			// 	modal.style.display = 'none';
+			// };
+
+			// updateForm.addEventListener('submit', updateFormSubmitHandler);
+
+			var span = document.getElementsByClassName('close')[0];
+			// modal.style.display = 'block';
+			span.onclick = function () {
+				modal.style.display = 'none';
+			};
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = 'none';
+				}
+			};
+		});
+	});
+
+	// edit functionality End
+}
+
+// Update / Edit Todo Ends Here
