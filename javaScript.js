@@ -376,8 +376,8 @@ function editTodo() {
 			openUpdateModal();
 			console.log(e.target.parentElement.parentElement);
 			let parent = e.target.parentElement;
-			let grandParentNode = parent.parentElement.className;
-			let [parentClass, commonClass] = grandParentNode.split(' ');
+			let grandParentClass = parent.parentElement.className;
+			let [parentClass, commonClass] = grandParentClass.split(' ');
 
 			let id = e.target.parentElement.id;
 
