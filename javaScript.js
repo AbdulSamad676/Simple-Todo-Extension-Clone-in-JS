@@ -385,36 +385,71 @@ function editTodo() {
 			console.log(`grandParent element is ${parentClass}`);
 
 			// Move updateForm declaration to the outer scope
-			// let updateForm = document.querySelector('.updateForm');
+			let updateForm = document.querySelector('.updateModalForm');
 
 			// Remove existing event listener
-			// updateForm.removeEventListener('submit', updateFormSubmitHandler);
+			updateForm.removeEventListener('submit', updateFormSubmitHandler);
 
 			// Add event listener for this instance
-			// updateFormSubmitHandler = function (e) {
-			// 	e.preventDefault();
+			updateFormSubmitHandler = function (e) {
+				e.preventDefault();
 
-			// 	let updateField = document.getElementById('updateText');
+				let updateField = document.getElementById('updateText');
 
-			// 	const updateFormData = new FormData(e.target);
-			// 	let updateData = updateFormData.get('updateText');
+				const updateFormData = new FormData(e.target);
+				let updateData = updateFormData.get('updateText');
+				// if (parentClass === 'dailtTodo') {
+				// 	// Ensure the editId is a valid index
+				// 	if (id >= 0 && id < dailyTodos.length) {
+				// 		// Update the todo at the specified index (id)
+				// 		dailyTodos[id] = updateData;
 
-			// 	// Ensure the editId is a valid index
-			// 	if (id >= 0 && id < todos.length) {
-			// 		// Update the todo at the specified index (id)
-			// 		todos[id] = updateData;
+				// 		// Display the updated todos
+				// 		display();
+				// 		updateField.value = '';
+				// 	} else {
+				// 		console.error('Invalid id:', id);
+				// 	}
+				// } else if (parentClass === 'weeklyTodo') {
+				// 	// Ensure the editId is a valid index
+				// 	if (id >= 0 && id < weeklyTodos.length) {
+				// 		// Update the todo at the specified index (id)
+				// 		weeklyTodos[id] = updateData;
 
-			// 		// Display the updated todos
-			// 		display();
-			// 		updateField.value = '';
-			// 	} else {
-			// 		console.error('Invalid id:', id);
-			// 	}
+				// 		// Display the updated todos
+				// 		display();
+				// 		updateField.value = '';
+				// 	} else {
+				// 		console.error('Invalid id:', id);
+				// 	}
+				// } else {
+				// 	if (id >= 0 && id < eventualyTodos.length) {
+				// 		// Update the todo at the specified index (id)
+				// 		eventualyTodos[id] = updateData;
 
-			// 	// Close the modal
-			// 	var modal = document.getElementById('myModal');
-			// 	modal.style.display = 'none';
-			// };
+				// 		// Display the updated todos
+				// 		display();
+				// 		updateField.value = '';
+				// 	} else {
+				// 		console.error('Invalid id:', id);
+				// 	}
+				// }
+				// 	// Ensure the editId is a valid index
+				// 	if (id >= 0 && id < todos.length) {
+				// 		// Update the todo at the specified index (id)
+				// 		todos[id] = updateData;
+
+				// 		// Display the updated todos
+				// 		display();
+				// 		updateField.value = '';
+				// 	} else {
+				// 		console.error('Invalid id:', id);
+				// 	}
+
+				// 	// Close the modal
+				// 	var modal = document.getElementById('myModal');
+				// 	modal.style.display = 'none';
+			};
 
 			// updateForm.addEventListener('submit', updateFormSubmitHandler);
 
