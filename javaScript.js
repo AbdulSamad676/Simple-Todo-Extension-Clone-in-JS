@@ -381,7 +381,7 @@ function editTodo() {
 			let grandParentClass = parent.parentElement.className;
 			let [parentClass, commonClass] = grandParentClass.split(' ');
 
-			let id = e.target.parentElement.id;
+			let id = parseInt(e.target.parentElement.id);
 
 			console.log(`parent element is ${parent.className}`);
 			console.log(`grandParent element is ${parentClass}`);
@@ -395,74 +395,68 @@ function editTodo() {
 			// Add event listener for this instance
 			updateFormSubmitHandler = function (e) {
 				e.preventDefault();
+				// remove the selected todo
+				let remP = dailyTodos.findIndex(elem => {
+					return elem.id === id;
+				});
+				console.log(`This is to be removed: ${remP}`);
+				if (parentClass === 'dailyTodos') {
+					let remP = dailyTodos.findIndex(elem => {
+						return elem.id === id;
+					});
+					dailyTodos.splice(remP, 1);
+					console.log(`This is to be removed daily: ${remP}`);
+				} else if (parentClass === 'weeklyTodos') {
+					let remP = weeklyTodos.findIndex(elem => {
+						return elem.id === id;
+					});
+					weeklyTodos.splice(remP, 1);
+					console.log(`This is to be removed weekly: ${remP}`);
+				} else {
+					let remP = eventualyTodos.findIndex(elem => {
+						return elem.id === id;
+					});
+					eventualyTodos.splice(remP, 1);
+					console.log(`This is to be removed eventually: ${remP}`);
+				}
+				// remove selected todo end
 
 				let updateField = document.getElementById('updateText');
 
 				const updateFormData = new FormData(e.target);
 				let updateData = updateFormData.get('updateText');
+
 				let todo = {
-					todoId: id, // Unique ID using timestamp
+					todoId: new Date().getTime(), // Unique ID using timestamp
 					text: updateData,
 				};
 				console.log(`Clicked todo: ${todo.text}`);
 
 				// selected Radio section
+
 				let selectedInputValue = document.querySelector(
 					'input[type="radio"]:checked'
 				);
-				// selected Radio section ends
 
-				// if (parentClass === 'dailyTodos') {
-				// 	// Ensure the editId is a valid index
-				// 	if (id >= 0 && id < dailyTodos.length) {
-				// 		// Update the todo at the specified index (id)
-				// 		dailyTodos[id] = updateData;
+				if (selectedInputValue) {
+					let selectedBtnId = selectedInputValue.id;
 
-				// 		// Display the updated todos
-				// 		display();
-				// 		updateField.value = '';
-				// 	} else {
-				// 		console.error('Invalid id:', id);
-				// 	}
-				// } else if (parentClass === 'weeklyTodo') {
-				// 	// Ensure the editId is a valid index
-				// 	if (id >= 0 && id < weeklyTodos.length) {
-				// 		// Update the todo at the specified index (id)
-				// 		weeklyTodos[id] = updateData;
+					if (selectedBtnId == 'updateDaily') {
+						dailyTodos.push(todo);
+					} else if (selectedBtnId == 'updateWeekly') {
+						weeklyTodos.push(todo);
+					} else if (selectedBtnId == 'updateEventually') {
+						eventualyTodos.push(todo);
+					}
 
-				// 		// Display the updated todos
-				// 		display();
-				// 		updateField.value = '';
-				// 	} else {
-				// 		console.error('Invalid id:', id);
-				// 	}
-				// } else {
-				// 	if (id >= 0 && id < eventualyTodos.length) {
-				// 		// Update the todo at the specified index (id)
-				// 		eventualyTodos[id] = updateData;
+					updateField.value = '';
+					selectedInputValue.checked = false;
+					removeLabel();
+					closeUpdateModal();
+					display();
+				}
 
-				// 		// Display the updated todos
-				// 		display();
-				// 		updateField.value = '';
-				// 	} else {
-				// 		console.error('Invalid id:', id);
-				// 	}
-				// }
-				// 	// Ensure the editId is a valid index
-				// 	if (id >= 0 && id < todos.length) {
-				// 		// Update the todo at the specified index (id)
-				// 		todos[id] = updateData;
-
-				// 		// Display the updated todos
-				// 		display();
-				// 		updateField.value = '';
-				// 	} else {
-				// 		console.error('Invalid id:', id);
-				// 	}
-
-				// 	// Close the modal
-				// 	var modal = document.getElementById('myModal');
-				// 	modal.style.display = 'none';
+				// selected Radio section end
 			};
 
 			updateForm.addEventListener('submit', updateFormSubmitHandler);
@@ -470,6 +464,7 @@ function editTodo() {
 			var span = document.getElementsByClassName('close')[0];
 			// modal.style.display = 'block';
 			span.onclick = function () {
+				console.log('span clicked');
 				modal.style.display = 'none';
 			};
 			window.onclick = function (event) {
