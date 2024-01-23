@@ -282,17 +282,17 @@ btns.forEach(item => {
 function removeTodo() {
 	let closeButtons = document.querySelectorAll('.closeBtn');
 	closeButtons.forEach(item => {
-		// console.log(item.parentElement.firstChild.data);
-		// console.log(todos);
 		item.onclick = function () {
 			let parent = this.parentElement;
 			parent.style.display = 'none';
-			// console.log(todos);
+
 			let p = this.parentElement.firstChild.data;
-			// console.log(this.parentElement.firstChild.data);
-			let remP = dailyTodos.findIndex(elem => {
-				return elem === p;
-			});
+			console.log(`p in removeTodo ${p}`);
+			//testing new logic
+			// let remP = dailyTodos.findIndex(elem => {
+			// 	return elem === p;
+			// });
+			//testing new logic
 			// getting grand parent of the icon
 			// which is daily or weekly or eventually
 			console.log(parent.parentNode.className);
@@ -302,10 +302,20 @@ function removeTodo() {
 			let [parentClass, commonClass] = grandParentNode.split(' ');
 			// console.log(`first ${firstWord}`);
 			if (parentClass === 'dailyTodos') {
+				let remP = dailyTodos.findIndex(elem => {
+					return elem.text === p;
+				});
+
 				dailyTodos.splice(remP, 1);
 			} else if (parentClass === 'weeklyTodos') {
+				let remP = weeklyTodos.findIndex(elem => {
+					return elem.text === p;
+				});
 				weeklyTodos.splice(remP, 1);
 			} else {
+				let remP = eventualyTodos.findIndex(elem => {
+					return elem.text === p;
+				});
 				eventualyTodos.splice(remP, 1);
 			}
 
@@ -369,7 +379,7 @@ function editTodo() {
 	// Get the button that opens the modal
 	// var btn = document.getElementById('myBtn');
 	let editbtns = document.querySelectorAll('.editBtn');
-	// console.log(editbtns);
+
 	// Get the <span> element that closes the modal
 	let myedit = Array.from(editbtns);
 	console.log(myedit);
